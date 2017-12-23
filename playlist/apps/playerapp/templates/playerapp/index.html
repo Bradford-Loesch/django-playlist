@@ -5,10 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Make a playlist bitch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-    
+    <h1>Welcome to the Playlist of DOOM</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p class="text-danger">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <hr>
+    <div id="wrapper" class="container row">
+        <div class="col-md-6">
+            <h2>Login</h2>
+            <form class='form' action='/login' method='POST'>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="loginemail">Email:</label>
+                    <input type="text" name="loginemail" id="loginemail" class="form-control" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label for="loginpassword">Password:</label><br>
+                    <input type="password" name="loginpassword" id="loginpassword" class="form-control" placeholder="password">
+                </div>
+                <input type="submit" value="Login" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>Register</h2>
+            <form class='form' action='/register' method='POST'>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="first_name">First Name:</label><br>
+                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="first name">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label><br>
+                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="last name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label><br>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label for="passworda">Password:</label><br>
+                    <input type="password" name="passworda" id="passworda" class="form-control" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <label for="passwordb">Confirm Password:</label><br>
+                    <input type="password" name="passwordb" id="passwordb" class="form-control" placeholder="confirm password">
+                </div>
+                <input type="submit" value="Register" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
