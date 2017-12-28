@@ -37,4 +37,7 @@ def register(request):
 def dashboard(request):
     if not 'user' in request.session:
         return redirect('/')
+    return render(request, 'playerapp/dashboard.html')
+
+def logout(request):
     
